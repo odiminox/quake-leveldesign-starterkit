@@ -1,3 +1,22 @@
+2019-03-25 ericw-tools 0.18.2-rc1
+
+Bug fixes:
+
+- qbsp: fix "_mirrorinside" on bmodels
+- qbsp: fix t-junctions on bmodels (fixes sparkles, lightmap seams, phong shading)
+- qbsp: fix a case where func_detail faces were incorrectly deleted during outside-filling
+- light: fix seams on "_mirrorinside" geometry (#236)
+- light: fix black faces with sunlight pointing straight down
+- vis: fix for microleafs blocking vis (e.g. 0.01 units thick). 
+       This fixes HOMs appearing when a map was vised. (#261)
+
+Features:
+
+- qbsp: support a hybrid Valve 220 texturing + q2/q3 surface flags .map format
+- qbsp: added -worldextent option for large maps (deault=65536, meaning +/-65536 units):
+- light: Add "_bounce" "-1" model entity key to prevent light from bouncing off those brushes
+- light: experimental support for lighting Quake 2 .bsp's
+
 2018-04-05 ericw-tools 0.18.1
 
 - qbsp: fix crash when worldspawn has 0 brushes
