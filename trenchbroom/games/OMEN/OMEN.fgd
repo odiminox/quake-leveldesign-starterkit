@@ -32,21 +32,29 @@
 @baseclass = Appearflags [
 	spawnflags(Flags) =
 	[
-		256 : "Not on Easy" : 0
+		256 : "Unused" : 0
 
 	]
 ]
 
-@baseclass = Targetname [ targetname(target_source) : "Name" ]
-@baseclass = Target [
-	target(target_destination) : "Target"
-	killtarget(target_destination) : "Killtarget"
+@baseclass = Targetname [ targetname(string) : "Name" ]
+
+//
+// actors
+//
+
+@baseclass base(Appearflags,Angle,Targetname) size(-16 -16 -24, 16 16 32)
+	color(0 255 0) = Actor [
+	targetname(string) : "Name" : "actor"
 ]
 
-@baseclass base(Appearflags) size(-16 -16 -24, 16 16 32)
-	color(0 255 0) = PlayerClass []
+@PointClass base(Actor) = info_player_start : "Player start" [
 
-@PointClass base(PlayerClass) = player_start : "Player start" []
+]
+
+//
+// props
+//
 
 
 //
@@ -65,24 +73,19 @@
 // lights
 //
 
+
 @baseclass color(255 255 40) = Light [
-	wait(integer) : "Fade distance multiplier" : 1
-	lighttype(Choices) : "Light Type" : 0 =
-	[
-		0 : "default"
-		1 : "pointlight"
-	]
+	targetname(string) : "Name" : "light"
 ]
 
-
-@PointClass size(-8 -8 -8, 8 8 8) base(Light, Target, Targetname) =
-	light : "Light"
+@PointClass size(-8 -8 -8, 8 8 8) base(Light, Targetname) =
+	point_light : "Point Light"
 	[
+
 		range(float) : "Range" : "10"
 		intensity(float): "Intensity" : "10"
-		spawnflags(Flags) = [ 1 : "Start off" : 0 ]
-
 	]
+
 
 //
 // misc
