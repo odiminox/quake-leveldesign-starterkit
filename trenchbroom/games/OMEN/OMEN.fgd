@@ -13,9 +13,14 @@
 	message(string) : "Text on entering the world"
 	worldtype(choices) : "Ambience" : 0 =
 	[
-		0 : "Default"
+		0 : "Medieval"
+		1 : "Metal (runic)"
+		2 : "Base"
 	]
-	sounds(integer) : "Audio track to play" : 0
+	sounds(integer) : "CD track to play" : 0
+	light(integer) : "Ambient light"
+	_sunlight(integer) : "Sunlight"
+	_sun_mangle(string) : "Sun mangle (Yaw pitch roll)"
 ]
 
 //
@@ -61,44 +66,23 @@
 //
 
 @baseclass color(255 255 40) = Light [
-	light(integer) : "Brightness" : 300
 	wait(integer) : "Fade distance multiplier" : 1
-	delay(choices) : "Attenuation" =
+	lighttype(Choices) : "Light Type" : 0 =
 	[
-		0 : "Linear falloff (Default)"
-		1 : "Inverse distance falloff"
-		2 : "Inverse distance squared"
-		3 : "No falloff"
-		4 : "Local minlight"
-		5 : "Inverse distance squared B"
-	]
-	mangle(string) : "Spotlight angle"
-	style(Choices) : "Appearance" : 0 =
-	[
-		0 : "Normal"
-		10: "Fluorescent flicker"
-		2 : "Slow, strong pulse"
-		11: "Slow pulse, noblack"
-		5 : "Gentle pulse"
-		1 : "Flicker A"
-		6 : "Flicker B"
-		3 : "Candle A"
-		7 : "Candle B"
-		8 : "Candle C"
-		4 : "Fast strobe"
-		9 : "Slow strobe"
+		0 : "default"
+		1 : "pointlight"
 	]
 ]
 
 
 @PointClass size(-8 -8 -8, 8 8 8) base(Light, Target, Targetname) =
-	pointlight : "Point Light"
+	light : "Light"
 	[
+		range(float) : "Range" : "10"
+		intensity(float): "Intensity" : "10"
 		spawnflags(Flags) = [ 1 : "Start off" : 0 ]
-		range(integer) : "Range" : 10
-		intensity(integer): "Intensity" : 10
-	]
 
+	]
 
 //
 // misc
