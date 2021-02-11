@@ -38,7 +38,10 @@
 ]
 
 @baseclass = Targetname [ targetname(string) : "Name" ]
-
+@baseclass = Target [
+	target(target_destination) : "Target"
+	killtarget(target_destination) : "Killtarget"
+]
 //
 // actors
 //
