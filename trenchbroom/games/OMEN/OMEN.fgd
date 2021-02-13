@@ -236,8 +236,9 @@
 // triggers
 //
 
-@baseclass base(Appearflags, Target, Targetname) = Trigger
+@baseclass base(Appearflags, Target, Targetname,TypeName) = Trigger
 [
+	typename(string) : "TypeName" : "trigger"
 	sounds(choices) : "Sound style" : 0 =
 	[
 		0 : "None"
