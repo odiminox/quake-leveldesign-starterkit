@@ -42,13 +42,16 @@
 	target(target_destination) : "Target"
 	killtarget(target_destination) : "Killtarget"
 ]
+
+@baseclass = TypeName [ typename(string) : "TypeName" ]
+
 //
 // actors
 //
 
-@baseclass base(Appearflags,Angle,Targetname) size(-16 -16 -24, 16 16 32)
+@baseclass base(Appearflags,Angle,Targetname,TypeName) size(-16 -16 -24, 16 16 32)
 	color(0 255 0) = Actor [
-	targetname(string) : "Name" : "actor"
+	typename(string) : "TypeName" : "actor"
 ]
 
 @PointClass base(Actor) = info_player_start : "Player start" [
@@ -78,11 +81,11 @@
 
 
 @baseclass color(255 255 40) = Light [
-	targetname(string) : "Name" : "light"
+	typename(string) : "TypeName" : "light"
 ]
 
 @PointClass size(-8 -8 -8, 8 8 8) base(Light, Targetname) =
-	point_light : "Point Light"
+	light_point : "Point Light"
 	[
 
 		range(float) : "Range" : "10"
